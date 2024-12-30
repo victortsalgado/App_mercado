@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Rankings">
+    <ActionItem text="Atualizar" 
+                android.position="actionBar"
+                tap="{{ refreshRankings }}" />
+  </ActionBar>
+
+  <GridLayout rows="auto, *">
+    <!-- Filtros -->
+    <GridLayout row="0" columns="*, *" class="p-4 bg-white">
+      <SegmentedBar selectedIndex="{{ selectedPeriodIndex }}" col="0">
+        <SegmentedBar.items>
+          <SegmentedBarItem title="Semanal" />
+          <SegmentedBarItem title="Mensal" />
+          <SegmentedBarItem title="Geral" />
+        </SegmentedBar.items>
+      </SegmentedBar>
+      
+      <SegmentedBar selectedIndex="{{ selectedCategoryIndex }}" col="1">
+        <SegmentedBar.items>
+          <SegmentedBarItem title="Pontos" />
+          <SegmentedBarItem title="Economia" />
+          <SegmentedBarItem title="Conquistas" />
+        </SegmentedBar.items>
+      </SegmentedBar>
+    </GridLayout>
+
+    <!-- Lista de Rankings -->
+    <ListView items="{{ rankings }}" row="1">
+      <ListView.itemTemplate>
+        <GridLayout columns="auto, *, auto" class="p-4 bg-white mb-2">
+          <Label text="{{ position + 'º' }}" 
+                 class="{{ position <= 3 ? 'text-xl font-bold text-green-600' : '' }}"
+                 col="0" />
+          
+          <StackLayout col="1" class="ml-4">
+            <Label text="{{ name }}" class="font-bold" />
+            <Label text="{{ getValueLabel(category, value) }}" class="text-sm text-gray-600" />
+          </StackLayout>
+          
+          <Label text="{{ getPositionChange(position, previousPosition) }}"
+                 class="{{ getPositionChangeClass(position, previousPosition) }}"
+                 col="2" />
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </GridLayout>
+</Page>

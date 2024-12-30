@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Desafios">
+    <ActionItem text="Atualizar" 
+                android.position="actionBar"
+                tap="{{ refreshChallenges }}" />
+  </ActionBar>
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <!-- Desafios Diários -->
+      <Label text="Desafios Diários" class="text-xl font-bold mb-2" />
+      <ListView items="{{ dailyChallenges }}" height="{{ listViewHeight }}">
+        <ListView.itemTemplate>
+          <challenge:ChallengeCard challenge="{{ $value }}" />
+        </ListView.itemTemplate>
+      </ListView>
+      
+      <!-- Progresso Diário -->
+      <GridLayout columns="*, auto" class="mt-4 mb-8">
+        <Label text="Progresso Diário" class="font-semibold" />
+        <Label text="{{ completedDaily + '/' + totalDaily }}" 
+               class="text-green-600" col="1" />
+      </GridLayout>
+    </StackLayout>
+  </ScrollView>
+</Page>

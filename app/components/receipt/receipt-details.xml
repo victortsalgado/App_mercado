@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Detalhes da Nota">
+    <NavigationButton text="Voltar" android.systemIcon="ic_menu_back" />
+    <ActionItem text="Compartilhar" 
+                android.position="actionBar" 
+                tap="{{ shareReceipt }}" />
+  </ActionBar>
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <GridLayout rows="auto" columns="*, auto" class="mb-4">
+        <Label text="{{ receipt.store }}" class="text-xl font-bold" col="0" />
+        <Label text="{{ receipt.date, 'dd/MM/yyyy' }}" class="text-gray-500" col="1" />
+      </GridLayout>
+
+      <Label text="Itens" class="text-lg font-semibold mb-2" />
+      <ListView items="{{ receipt.items }}" height="{{ listViewHeight }}" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout columns="*, auto, auto" class="p-2">
+            <Label text="{{ name }}" col="0" textWrap="true" />
+            <Label text="{{ quantity + 'x' }}" col="1" class="mx-2" />
+            <Label text="{{ 'R$ ' + price }}" col="2" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+
+      <StackLayout class="bg-gray-100 p-4 rounded-lg">
+        <GridLayout columns="*, auto">
+          <Label text="Total" class="text-lg font-bold" />
+          <Label text="{{ 'R$ ' + receipt.total }}" class="text-lg font-bold text-green-600" col="1" />
+        </GridLayout>
+      </StackLayout>
+
+      <Button text="Compartilhar Promoção" 
+              tap="{{ sharePromotion }}"
+              class="btn btn-primary mt-4" />
+    </StackLayout>
+  </ScrollView>
+</Page>

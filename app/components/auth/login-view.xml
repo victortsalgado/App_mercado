@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Login" />
+  <StackLayout class="p-4">
+    <Label text="Bem-vindo ao ReceiptScan" class="text-2xl font-bold text-center mb-8" />
+    
+    <StackLayout class="form">
+      <Label text="Email" class="label" />
+      <TextField text="{{ email }}" 
+                 hint="seu@email.com" 
+                 keyboardType="email"
+                 autocorrect="false"
+                 autocapitalizationType="none"
+                 class="input" />
+      
+      <Label text="Senha" class="label" />
+      <TextField text="{{ password }}" 
+                 hint="Sua senha" 
+                 secure="true"
+                 class="input" />
+      
+      <Button text="Entrar" 
+              tap="{{ onLogin }}"
+              class="btn btn-primary mt-4" />
+              
+      <Button text="Criar conta" 
+              tap="{{ onRegister }}"
+              class="btn btn-outline mt-2" />
+    </StackLayout>
+  </StackLayout>
+</Page>

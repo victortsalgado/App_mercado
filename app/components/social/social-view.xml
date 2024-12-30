@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd">
+  <ActionBar title="Feed Social" />
+  <GridLayout rows="*, auto">
+    <ListView items="{{ posts }}" row="0">
+      <ListView.itemTemplate>
+        <GridLayout rows="auto, auto, auto" class="p-2 bg-white m-2 rounded-lg">
+          <GridLayout columns="*, auto" row="0" class="p-2">
+            <Label text="{{ store }}" class="font-bold" col="0" />
+            <Label text="{{ createdAt, 'dd/MM/yyyy' }}" class="text-gray-500" col="1" />
+          </GridLayout>
+          
+          <StackLayout row="1" class="p-2">
+            <Label text="{{ content }}" textWrap="true" />
+            <Label text="{{ 'Economia: R$ ' + savings }}" class="text-green-600" 
+                   visibility="{{ savings ? 'visible' : 'collapsed' }}" />
+          </StackLayout>
+          
+          <GridLayout columns="auto, *" row="2" class="p-2">
+            <Button text="❤️ {{ likes }}" tap="{{ $parent.likePost }}" 
+                    class="btn btn-outline" col="0" />
+            <Label text="{{ comments.length + ' comentários' }}" 
+                   class="text-right text-gray-500" col="1" />
+          </GridLayout>
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+    
+    <Button text="+" tap="{{ showCreatePost }}" 
+            class="btn btn-primary rounded-full w-16 h-16"
+            horizontalAlignment="right" verticalAlignment="bottom"
+            margin="16" row="0" />
+  </GridLayout>
+</Page>

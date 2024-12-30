@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackLayout xmlns="http://schemas.nativescript.org/tns.xsd" 
+             class="bg-white p-4 rounded-lg">
+  <Label text="Lojas Mais Frequentes" class="text-lg font-bold mb-2" />
+  
+  <ListView items="{{ stores }}" height="200">
+    <ListView.itemTemplate>
+      <GridLayout columns="*, auto, auto" class="p-2">
+        <Label text="{{ name }}" col="0" />
+        <Label text="{{ visits + ' visitas' }}" 
+               class="text-gray-500 mx-2" col="1" />
+        <Label text="{{ spending | currency }}" 
+               class="text-right" col="2" />
+      </GridLayout>
+    </ListView.itemTemplate>
+  </ListView>
+</StackLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Feed Social">
+    <ActionItem text="Filtrar" 
+                android.position="actionBar"
+                tap="{{ showFilters }}" />
+  </ActionBar>
+
+  <GridLayout rows="auto, *">
+    <StackLayout row="0" class="p-2 bg-gray-100">
+      <SearchBar hint="Buscar por loja..." 
+                 text="{{ searchQuery }}"
+                 submit="{{ onSearch }}"
+                 clear="{{ onClearSearch }}" />
+    </StackLayout>
+
+    <ListView items="{{ posts }}" row="1">
+      <ListView.itemTemplate>
+        <StackLayout class="p-4 bg-white m-2 rounded-lg">
+          <post:PostCard post="{{ $value }}" />
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </GridLayout>
+</Page>

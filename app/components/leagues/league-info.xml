@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackLayout xmlns="http://schemas.nativescript.org/tns.xsd" 
+             class="bg-white p-4 rounded-lg">
+  <GridLayout columns="auto, *" class="mb-4">
+    <Label text="{{ getLeagueEmoji(league.tier) }}" 
+           class="text-3xl mr-2" col="0" />
+    <StackLayout col="1">
+      <Label text="{{ league.name }}" class="text-xl font-bold" />
+      <Label text="{{ currentPoints + ' pontos' }}" class="text-gray-600" />
+    </StackLayout>
+  </GridLayout>
+
+  <GridLayout rows="auto" columns="*, *" class="mb-4">
+    <StackLayout col="0" class="text-center">
+      <Label text="Semanal" class="font-semibold" />
+      <Label text="{{ weeklyPoints + ' pts' }}" class="text-green-600" />
+    </StackLayout>
+    <StackLayout col="1" class="text-center">
+      <Label text="Mensal" class="font-semibold" />
+      <Label text="{{ monthlyPoints + ' pts' }}" class="text-green-600" />
+    </StackLayout>
+  </GridLayout>
+
+  <StackLayout class="bg-gray-100 p-2 rounded">
+    <Label text="Próxima Liga:" class="font-semibold" />
+    <GridLayout columns="*, auto" class="mt-1">
+      <Label text="{{ nextLeague.name }}" col="0" />
+      <Label text="{{ getPointsToNextLeague + ' pts faltando' }}" 
+             class="text-gray-600" col="1" />
+    </GridLayout>
+  </StackLayout>
+</StackLayout>

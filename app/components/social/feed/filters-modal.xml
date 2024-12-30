@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Filtros">
+    <NavigationButton text="Cancelar" tap="{{ close }}" />
+    <ActionItem text="Aplicar" 
+                android.position="actionBar"
+                tap="{{ applyFilters }}" />
+  </ActionBar>
+
+  <StackLayout class="p-4">
+    <Label text="Tipo de Post" class="text-lg font-bold mb-2" />
+    <ListPicker items="{{ postTypes }}"
+                selectedIndex="{{ selectedTypeIndex }}"
+                class="mb-4" />
+
+    <Label text="Ordenar por" class="text-lg font-bold mb-2" />
+    <ListPicker items="{{ sortOptions }}"
+                selectedIndex="{{ selectedSortIndex }}"
+                class="mb-4" />
+
+    <Button text="Limpar Filtros"
+            tap="{{ clearFilters }}"
+            class="btn btn-outline" />
+  </StackLayout>
+</Page>

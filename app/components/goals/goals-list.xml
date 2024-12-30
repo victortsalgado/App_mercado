@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Minhas Metas">
+    <ActionItem text="Nova Meta" 
+                android.position="actionBar"
+                tap="{{ createGoal }}" />
+  </ActionBar>
+
+  <GridLayout rows="auto, *">
+    <!-- Resumo -->
+    <GridLayout row="0" columns="*, *" class="p-4 bg-white">
+      <StackLayout col="0" class="text-center">
+        <Label text="{{ activeGoals }}" class="text-2xl font-bold" />
+        <Label text="Metas Ativas" class="text-sm text-gray-600" />
+      </StackLayout>
+      <StackLayout col="1" class="text-center">
+        <Label text="{{ completedGoals }}" class="text-2xl font-bold text-green-600" />
+        <Label text="Metas Concluídas" class="text-sm text-gray-600" />
+      </StackLayout>
+    </GridLayout>
+
+    <!-- Lista de Metas -->
+    <ListView items="{{ goals }}" row="1" class="list-group">
+      <ListView.itemTemplate>
+        <GridLayout rows="auto, auto" columns="*, auto" class="p-4 bg-white mb-2">
+          <Label text="{{ name }}" class="font-bold" row="0" col="0" />
+          <Label text="{{ 'R$ ' + currentAmount + ' / R$ ' + targetAmount }}" 
+                 class="text-right" row="0" col="1" />
+          
+          <GridLayout rows="2" columns="*, auto" row="1" col="0" colSpan="2">
+            <Progress value="{{ progress.percentage }}" 
+                     maxValue="100"
+                     class="progress-bar" col="0" />
+            <Label text="{{ progress.percentage + '%' }}"
+                   class="text-sm text-gray-600 ml-2" col="1" />
+          </GridLayout>
+          
+          <StackLayout row="2" col="0" colSpan="2" class="mt-2">
+            <Label text="{{ 'Faltam R$ ' + progress.remainingAmount }}"
+                   class="text-sm text-gray-600" />
+            <Label text="{{ getDaysRemainingText(progress.daysRemaining) }}"
+                   class="text-sm text-gray-600"
+                   visibility="{{ deadline ? 'visible' : 'collapsed' }}" />
+          </StackLayout>
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </GridLayout>
+</Page>

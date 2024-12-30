@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Compartilhar">
+    <NavigationButton text="Voltar" android.systemIcon="ic_menu_back" />
+  </ActionBar>
+
+  <StackLayout class="p-4">
+    <SegmentedBar selectedIndex="{{ selectedType }}" class="mb-4">
+      <SegmentedBar.items>
+        <SegmentedBarItem title="Promoção" />
+        <SegmentedBarItem title="Avaliação" />
+        <SegmentedBarItem title="Alerta de Preço" />
+      </SegmentedBar.items>
+    </SegmentedBar>
+
+    <Label text="Loja" class="text-sm text-gray-600" />
+    <TextField text="{{ store }}" 
+               class="input mb-4" 
+               editable="false" />
+
+    <Label text="Conteúdo" class="text-sm text-gray-600" />
+    <TextView text="{{ content }}" 
+              hint="Compartilhe sua experiência..."
+              class="input h-32 mb-4" />
+
+    <GridLayout rows="auto" columns="*, auto" 
+                visibility="{{ type === 'DEAL' ? 'visible' : 'collapsed' }}">
+      <TextField text="{{ productName }}" 
+                 hint="Nome do produto"
+                 class="input" col="0" />
+      <TextField text="{{ price }}" 
+                 hint="Preço"
+                 keyboardType="number"
+                 class="input ml-2" col="1" />
+    </GridLayout>
+
+    <Button text="Publicar" 
+            tap="{{ publishPost }}"
+            class="btn btn-primary mt-4" />
+  </StackLayout>
+</Page>

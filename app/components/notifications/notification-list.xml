@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Notificações">
+    <ActionItem text="Marcar todas como lidas" 
+                android.position="actionBar"
+                tap="{{ markAllAsRead }}" />
+  </ActionBar>
+
+  <GridLayout>
+    <ListView items="{{ notifications }}" class="list-group">
+      <ListView.itemTemplate>
+        <GridLayout columns="auto, *" class="p-2" opacity="{{ read ? 0.6 : 1 }}">
+          <Label text="{{ getTypeIcon(type) }}" 
+                 class="text-2xl mr-2" col="0" />
+          <StackLayout col="1">
+            <Label text="{{ title }}" class="font-bold" />
+            <Label text="{{ message }}" textWrap="true" />
+            <Label text="{{ createdAt, 'dd/MM/yyyy HH:mm' }}" 
+                   class="text-xs text-gray-500" />
+          </StackLayout>
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <Label text="Nenhuma notificação" 
+           class="text-gray-500 text-center"
+           visibility="{{ notifications.length ? 'collapsed' : 'visible' }}" />
+  </GridLayout>
+</Page>

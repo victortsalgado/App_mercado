@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackLayout xmlns="http://schemas.nativescript.org/tns.xsd" 
+             class="bg-white p-4 rounded-lg">
+  <Label text="Top Categorias" class="text-lg font-bold mb-2" />
+  
+  <ListView items="{{ categories }}" height="200">
+    <ListView.itemTemplate>
+      <GridLayout columns="*, auto" class="p-2">
+        <Label text="{{ name }}" col="0" />
+        <Label text="{{ spending | currency }}" 
+               class="text-right" col="1" />
+      </GridLayout>
+    </ListView.itemTemplate>
+  </ListView>
+</StackLayout>

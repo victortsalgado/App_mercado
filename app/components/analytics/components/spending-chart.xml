@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackLayout xmlns="http://schemas.nativescript.org/tns.xsd" 
+             class="bg-white p-4 rounded-lg">
+  <Label text="Gastos por Período" class="text-lg font-bold mb-2" />
+  
+  <!-- TODO: Implementar gráfico com biblioteca de terceiros -->
+  <GridLayout rows="auto" columns="repeat(7, *)" class="h-40">
+    <Repeater items="{{ data }}">
+      <Repeater.itemTemplate>
+        <StackLayout class="h-full" col="{{ $index }}">
+          <StackLayout class="bg-green-500" 
+                      height="{{ percentage }}%"
+                      verticalAlignment="bottom" />
+          <Label text="{{ label }}" 
+                 class="text-xs text-center" />
+        </StackLayout>
+      </Repeater.itemTemplate>
+    </GridLayout>
+  </GridLayout>
+</StackLayout>

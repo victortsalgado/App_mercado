@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Análises">
+    <ActionItem text="Filtros" 
+                android.position="actionBar"
+                tap="{{ showFilters }}" />
+  </ActionBar>
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <!-- Resumo do Período -->
+      <analytics:PeriodSummary period="{{ selectedPeriod }}" 
+                              stats="{{ periodStats }}" 
+                              class="mb-4" />
+      
+      <!-- Gráfico de Gastos -->
+      <analytics:SpendingChart data="{{ spendingData }}" 
+                              class="mb-4" />
+      
+      <!-- Top Categorias -->
+      <analytics:TopCategories categories="{{ topCategories }}" 
+                              class="mb-4" />
+                              
+      <!-- Lojas Frequentes -->
+      <analytics:FrequentStores stores="{{ frequentStores }}" />
+    </StackLayout>
+  </ScrollView>
+</Page>

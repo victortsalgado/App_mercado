@@ -1,0 +1,44 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="ReceiptScan" />
+  <GridLayout rows="auto, *">
+    <StackLayout row="0" class="p-4 bg-white">
+      <Label text="Suas Economias" class="text-lg font-bold" />
+      <Label text="{{ totalSavings }}" class="text-2xl text-green-600" />
+    </StackLayout>
+    
+    <TabView row="1" selectedTabTextColor="#4CAF50">
+      <TabViewItem title="Notas">
+        <GridLayout>
+          <ListView items="{{ receipts }}">
+            <ListView.itemTemplate>
+              <StackLayout class="p-2">
+                <Label text="{{ store }}" class="font-bold" />
+                <Label text="{{ date, 'dd/MM/yyyy' }}" />
+                <Label text="{{ 'R$ ' + total }}" class="text-green-600" />
+              </StackLayout>
+            </ListView.itemTemplate>
+          </ListView>
+          <Button text="+" tap="{{ onScanReceipt }}" 
+                  class="btn btn-primary rounded-full w-16 h-16"
+                  horizontalAlignment="right" 
+                  verticalAlignment="bottom"
+                  margin="16" />
+        </GridLayout>
+      </TabViewItem>
+      
+      <TabViewItem title="Social">
+        <GridLayout>
+          <ListView items="{{ promotions }}">
+            <ListView.itemTemplate>
+              <StackLayout class="p-2">
+                <Label text="{{ store }}" class="font-bold" />
+                <Label text="{{ description }}" textWrap="true" />
+                <Label text="{{ 'Economia: R$ ' + savings }}" class="text-green-600" />
+              </StackLayout>
+            </ListView.itemTemplate>
+          </ListView>
+        </GridLayout>
+      </TabViewItem>
+    </TabView>
+  </GridLayout>
+</Page>

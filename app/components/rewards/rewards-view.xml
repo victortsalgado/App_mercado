@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Recompensas" />
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <!-- Nível e Progresso -->
+      <StackLayout class="bg-white p-4 rounded-lg mb-4">
+        <Label text="{{ 'Nível ' + userRewards.level }}" class="text-2xl font-bold text-center" />
+        <GridLayout rows="2" columns="*, auto" class="mt-2">
+          <Progress value="{{ userRewards.currentLevelPoints }}" 
+                   maxValue="{{ userRewards.nextLevelPoints }}"
+                   class="progress-bar" col="0" />
+          <Label text="{{ userRewards.currentLevelPoints + ' / ' + userRewards.nextLevelPoints }}"
+                 class="text-sm text-gray-600 ml-2" col="1" />
+        </GridLayout>
+        <Label text="{{ 'Total de Pontos: ' + userRewards.totalPoints }}"
+               class="text-center text-gray-600 mt-2" />
+      </StackLayout>
+
+      <!-- Conquistas -->
+      <Label text="Conquistas" class="text-xl font-bold mb-2" />
+      <ListView items="{{ achievements }}" class="list-group">
+        <ListView.itemTemplate>
+          <GridLayout columns="auto, *, auto" class="p-4 bg-white mb-2" opacity="{{ achieved ? 1 : 0.5 }}">
+            <Label text="{{ getTypeEmoji(type) }}" class="text-2xl mr-2" col="0" />
+            <StackLayout col="1">
+              <Label text="{{ title }}" class="font-bold" />
+              <Label text="{{ description }}" textWrap="true" />
+              <Label text="{{ achievedAt, 'dd/MM/yyyy' }}" 
+                     class="text-xs text-gray-500"
+                     visibility="{{ achieved ? 'visible' : 'collapsed' }}" />
+            </StackLayout>
+            <Label text="{{ points + ' pts' }}" 
+                   class="text-green-600" col="2" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </StackLayout>
+  </ScrollView>
+</Page>

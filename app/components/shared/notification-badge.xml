@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns="http://schemas.nativescript.org/tns.xsd">
+  <Label text="🔔" class="text-xl" />
+  <Label text="{{ unreadCount }}"
+         class="text-xs text-white bg-red-500 rounded-full px-1"
+         horizontalAlignment="right"
+         verticalAlignment="top"
+         visibility="{{ unreadCount ? 'visible' : 'collapsed' }}" />
+</GridLayout>

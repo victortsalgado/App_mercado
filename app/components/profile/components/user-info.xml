@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackLayout xmlns="http://schemas.nativescript.org/tns.xsd" class="bg-white p-4 rounded-lg">
+  <Label text="{{ user.name }}" class="text-xl font-bold mb-2" />
+  <Label text="{{ user.email }}" class="text-gray-600" />
+  
+  <GridLayout rows="auto" columns="auto,*" class="mt-4">
+    <Label text="Preferências" class="font-semibold" col="0" />
+    <Label text="{{ user.preferences.favoriteStores.length + ' lojas favoritas' }}" 
+           class="text-right text-gray-600" col="1" />
+  </GridLayout>
+</StackLayout>

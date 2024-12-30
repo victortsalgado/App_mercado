@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Editar Perfil">
+    <NavigationButton text="Voltar" android.systemIcon="ic_menu_back" />
+    <ActionItem text="Salvar" 
+                android.position="actionBar"
+                tap="{{ saveProfile }}" />
+  </ActionBar>
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <Label text="Nome" class="text-sm text-gray-600" />
+      <TextField text="{{ name }}" 
+                 class="input mb-4" />
+      
+      <Label text="Email" class="text-sm text-gray-600" />
+      <TextField text="{{ email }}" 
+                 editable="false"
+                 class="input mb-4" />
+      
+      <Label text="Lojas Favoritas" class="text-sm text-gray-600" />
+      <ListView items="{{ favoriteStores }}" height="200" class="mb-4">
+        <ListView.itemTemplate>
+          <GridLayout columns="*, auto" class="p-2">
+            <Label text="{{ $value }}" col="0" />
+            <Button text="✕" 
+                    tap="{{ $parent.removeStore }}" 
+                    class="btn btn-outline" col="1" />
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+      
+      <Button text="Adicionar Loja" 
+              tap="{{ showAddStore }}"
+              class="btn btn-outline mb-4" />
+              
+      <Label text="Orçamento Mensal" class="text-sm text-gray-600" />
+      <TextField text="{{ maxBudget }}" 
+                 keyboardType="number"
+                 hint="R$ 0,00"
+                 class="input" />
+    </StackLayout>
+  </ScrollView>
+</Page>

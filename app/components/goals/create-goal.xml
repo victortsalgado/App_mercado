@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Nova Meta">
+    <NavigationButton text="Voltar" android.systemIcon="ic_menu_back" />
+  </ActionBar>
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <Label text="Nome da Meta" class="text-sm text-gray-600" />
+      <TextField text="{{ name }}" 
+                 hint="Ex: Comprar Geladeira Nova"
+                 class="input mb-4" />
+
+      <Label text="Valor Total" class="text-sm text-gray-600" />
+      <TextField text="{{ targetAmount }}"
+                 hint="R$ 0,00"
+                 keyboardType="number"
+                 class="input mb-4" />
+
+      <Label text="Data Limite (Opcional)" class="text-sm text-gray-600" />
+      <DatePicker date="{{ deadline }}"
+                  class="mb-4" />
+
+      <Label text="Categoria (Opcional)" class="text-sm text-gray-600" />
+      <TextField text="{{ category }}"
+                 hint="Ex: Eletrodomésticos"
+                 class="input mb-4" />
+
+      <Label text="Loja (Opcional)" class="text-sm text-gray-600" />
+      <TextField text="{{ store }}"
+                 hint="Nome da loja"
+                 class="input mb-4" />
+
+      <Button text="Criar Meta"
+              tap="{{ saveGoal }}"
+              class="btn btn-primary" />
+    </StackLayout>
+  </ScrollView>
+</Page>

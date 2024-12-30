@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns="http://schemas.nativescript.org/tns.xsd" rows="auto, auto, auto, auto">
+  <!-- Cabeçalho -->
+  <GridLayout row="0" columns="*, auto" class="mb-2">
+    <Label text="{{ post.store }}" class="font-bold" col="0" />
+    <Label text="{{ post.createdAt, 'dd/MM/yyyy HH:mm' }}" class="text-gray-500" col="1" />
+  </GridLayout>
+
+  <!-- Conteúdo -->
+  <StackLayout row="1" class="mb-2">
+    <Label text="{{ post.content }}" textWrap="true" />
+    
+    <!-- Informações de promoção -->
+    <StackLayout visibility="{{ post.type === 'DEAL' ? 'visible' : 'collapsed' }}"
+                 class="mt-2 p-2 bg-green-100 rounded">
+      <Label text="{{ post.productName }}" class="font-semibold" />
+      <Label text="{{ 'R$ ' + post.price }}" class="text-green-600" />
+    </StackLayout>
+  </StackLayout>
+
+  <!-- Ações -->
+  <GridLayout row="2" columns="auto, auto, *" class="mt-2">
+    <Button text="❤️ {{ post.likes }}" 
+            tap="{{ $parent.onLike }}"
+            class="btn btn-outline p-1" col="0" />
+    <Button text="💬 {{ post.comments.length }}"
+            tap="{{ $parent.showComments }}"
+            class="btn btn-outline p-1 ml-2" col="1" />
+  </GridLayout>
+
+  <!-- Comentários -->
+  <StackLayout row="3" class="mt-2"
+               visibility="{{ showComments ? 'visible' : 'collapsed' }}">
+    <ListView items="{{ post.comments }}" height="{{ commentListHeight }}">
+      <ListView.itemTemplate>
+        <GridLayout columns="*, auto" class="p-2">
+          <Label text="{{ content }}" textWrap="true" col="0" />
+          <Label text="{{ createdAt, 'HH:mm' }}" class="text-gray-500" col="1" />
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+    
+    <GridLayout columns="*, auto" class="mt-2">
+      <TextField hint="Adicionar comentário..." 
+                 text="{{ newComment }}"
+                 returnKeyType="send"
+                 col="0" />
+      <Button text="Enviar" 
+              tap="{{ $parent.addComment }}"
+              class="btn btn-primary ml-2" col="1" />
+    </GridLayout>
+  </StackLayout>
+</GridLayout>

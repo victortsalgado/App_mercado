@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Escanear Nota">
+    <NavigationButton text="Voltar" android.systemIcon="ic_menu_back" />
+  </ActionBar>
+  
+  <GridLayout rows="*, auto">
+    <Camera id="camera" row="0" class="w-full h-full" />
+    
+    <StackLayout row="1" class="p-4 bg-white">
+      <Button text="Capturar Nota" 
+              tap="{{ captureReceipt }}" 
+              class="btn btn-primary" />
+      <Label text="{{ status }}" 
+             class="text-center text-sm text-gray-600 mt-2" 
+             visibility="{{ status ? 'visible' : 'collapsed' }}" />
+    </StackLayout>
+  </GridLayout>
+</Page>

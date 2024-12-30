@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StackLayout xmlns="http://schemas.nativescript.org/tns.xsd">
+  <Label text="Últimas Notas" class="text-lg font-bold mb-2" />
+  
+  <ListView items="{{ receipts }}" height="300">
+    <ListView.itemTemplate>
+      <GridLayout columns="*, auto" class="p-2 bg-white mb-2 rounded">
+        <StackLayout col="0">
+          <Label text="{{ store }}" class="font-semibold" />
+          <Label text="{{ date, 'dd/MM/yyyy' }}" class="text-sm text-gray-500" />
+        </StackLayout>
+        <Label text="{{ 'R$ ' + total }}" 
+               class="text-green-600" 
+               col="1" />
+      </GridLayout>
+    </ListView.itemTemplate>
+  </ListView>
+</StackLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+  <ActionBar title="Meu Perfil">
+    <ActionItem text="Editar" 
+                android.position="actionBar"
+                tap="{{ editProfile }}" />
+  </ActionBar>
+
+  <ScrollView>
+    <StackLayout class="p-4">
+      <!-- Informações Básicas -->
+      <profile:UserInfo user="{{ user }}" class="mb-4" />
+      
+      <!-- Estatísticas -->
+      <profile:UserStats stats="{{ stats }}" class="mb-4" />
+      
+      <!-- Lista de Notas Fiscais -->
+      <profile:ReceiptList receipts="{{ receipts }}" />
+    </StackLayout>
+  </ScrollView>
+</Page>
